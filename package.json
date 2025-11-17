@@ -1,0 +1,19 @@
+{
+  "name": "zamabeliefx-deploy",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "hardhat compile",
+    "deploy:zama": "hardhat run scripts/deploy_Prediction.ts --network zamaDevnet"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "hardhat": "^2.22.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.0",
+    "dotenv": "^16.4.0"
+  },
+  "dependencies": {
+    "@fhenixprotocol/contracts": "^0.1.0"
+  }
+}
