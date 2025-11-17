@@ -22,7 +22,7 @@ contract PredictionBeliefMarket {
         string[] memory _outcomes,
         uint256 _endTime
     ) external {
-        require(_outcomes.length > 1, "Need 2+ outcomes");
+        require(_outcomes.length > 1, "2+ choices chaiye");
 
         eventCounter++;
         events[eventCounter] = EventData(
@@ -38,21 +38,25 @@ contract PredictionBeliefMarket {
     }
 
     function declareResult(uint256 _eventId, uint8 _correctOutcome) external {
-        require(!events[_eventId].resultDeclared, "Already declared");
+        require(!events[_eventId].resultDeclared, "Already done");
         events[_eventId].resultDeclared = true;
         events[_eventId].correctOutcome = _correctOutcome;
 
         emit ResultDeclared(_eventId, _correctOutcome);
     }
 
-    function getEvent(uint256 _eventId) external view returns (
-        string memory question,
-        string[] memory outcomes,
-        uint256 endTime,
-        bool resultDeclared,
-        uint8 correctOutcome
+    function getEvent(
+        uint256 _eventId
+    ) external view returns (
+        string memory, string[] memory, uint256, bool, uint8
     ) {
         EventData memory e = events[_eventId];
-        return (e.question, e.outcomes, e.endTime, e.resultDeclared, e.correctOutcome);
+        return (
+            e.question,
+            e.outcomes,
+            e.endTime,
+            e.resultDeclared,
+            e.correctOutcome
+        );
     }
 }
